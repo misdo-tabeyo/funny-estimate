@@ -34,7 +34,7 @@ const Home: NextPage = () => {
       <header css={css({height: HEADER_HEIGHT, display: "flex", alignItems: "center", padding: "0 30px", boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.2)", position: "relative"})}>
         <img src="/logo.png" alt='logo' width={120} height={60} />
         <div css={css({marginLeft: "auto", display: "flex", gap: 20})}>
-          <Link href="https://funny-okinawa.com" underline="hover" color="#212121" sx={{fontSize: {xs: 14, sm: 16}}}>ホームページ</Link>
+          <Link href="https://www.funny-okinawa.com" underline="hover" color="#212121" sx={{fontSize: {xs: 14, sm: 16}}}>ホームページ</Link>
           <Link href="https://www.instagram.com/funny.okinawa" underline="hover" color="#212121" sx={{fontSize: {xs: 14, sm: 16}}}>Instagram</Link>
         </div>
       </header>
