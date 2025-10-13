@@ -95,7 +95,7 @@ const Home: NextPage = () => {
         </div>
         <footer css={css({height: FOOTER_HEIGHT, background: "#ccc", padding: 20})}>
           <img src="/logo.png" alt='logo' width={120} height={60} />
-          <Typography variant="body2" component="p" gutterBottom>沖縄県浦添市沢岻1-42-1 玉城住宅1F</Typography>
+          <Typography variant="body2" component="p" gutterBottom>沖縄県 沖縄市 松本 5-13-63</Typography>
           <Link href="tel:09019453965" color="#212121" variant="body2" gutterBottom>☎090-1945-3965</Link>
         </footer>
     </div>
