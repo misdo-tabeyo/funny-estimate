@@ -22,10 +22,10 @@ const theme = createTheme({
     },
     palette: {
       text: {
-        primary: "#212121",
+        primary: "#000",
       },
       primary: {
-        main: '#f7c923',
+        main: '#ffd500',
       },
     },
 });

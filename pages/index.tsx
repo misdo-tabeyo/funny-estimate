@@ -32,10 +32,13 @@ const Home: NextPage = () => {
   return (
     <div css={css({display: "grid", gridTemplateRows: `${HEADER_HEIGHT} minmax(calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT}), auto) ${FOOTER_HEIGHT}`})}>
       <header css={css({height: HEADER_HEIGHT, display: "flex", alignItems: "center", padding: "0 30px", boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.2)", position: "relative"})}>
-        <img src="/logo.png" alt='logo' width={120} height={60} />
+        <div css={css({display: "flex", flexDirection: "column", alignItems: "center", gap: 6})}>
+          <img src="/logo-carfilm.webp" alt='logo' width={66} height={10} css={css({marginRight: 18})} />
+          <img src="/logo-funny.webp" alt='logo' width={168} height={40} />
+        </div>
         <div css={css({marginLeft: "auto", display: "flex", gap: 20})}>
-          <Link href="https://www.funny-okinawa.com" underline="hover" color="#212121" sx={{fontSize: {xs: 14, sm: 16}}}>ホームページ</Link>
-          <Link href="https://www.instagram.com/funny.okinawa" underline="hover" color="#212121" sx={{fontSize: {xs: 14, sm: 16}}}>Instagram</Link>
+          <Link href="https://www.funny-okinawa.com" underline="hover" color="#000" sx={{fontSize: {xs: 14, sm: 16}}}>ホームページ</Link>
+          <Link href="https://www.instagram.com/funny.okinawa" underline="hover" color="#000" sx={{fontSize: {xs: 14, sm: 16}}}>Instagram</Link>
         </div>
       </header>
       <div css={css({background: "#fff7db", padding: "40px 0", display: "grid", justifyContent: "center"})}>
@@ -94,9 +97,12 @@ const Home: NextPage = () => {
         </div>
         </div>
         <footer css={css({height: FOOTER_HEIGHT, background: "#ccc", padding: 20})}>
-          <img src="/logo.png" alt='logo' width={120} height={60} />
+          <div css={css({display: "flex", flexDirection: "column", gap: 6, paddingBottom: 10 })}>
+            <img src="/logo-carfilm.webp" alt='logo' width={66} height={10} css={css({marginRight: 18})} />
+            <img src="/logo-funny.webp" alt='logo' width={168} height={40} />
+          </div>
           <Typography variant="body2" component="p" gutterBottom>沖縄県 沖縄市 松本 5-13-63</Typography>
-          <Link href="tel:09019453965" color="#212121" variant="body2" gutterBottom>☎090-1945-3965</Link>
+          <Link href="tel:09019453965" color="#000" variant="body2" gutterBottom>☎090-1945-3965</Link>
         </footer>
     </div>
   )
@@ -149,7 +155,7 @@ const PriceTable = ({car}: {car: {name: string|null, frontSet: number|null, rear
             </TableRow>
         </TableBody>
       </Table>
-      <Link href="tel:09019453965" variant="body1" gutterBottom color="#212121">☎090-1945-3965<br />ご予約・お問い合わせはこちら</Link>
+      <Link href="tel:09019453965" variant="body1" gutterBottom color="#000">☎090-1945-3965<br />ご予約・お問い合わせはこちら</Link>
     </TableContainer>
   )
 }
