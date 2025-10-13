@@ -524,7 +524,7 @@ const PriceTable = ({car}: {car: {name: string|null, frontSet: number|null, rear
             </TableRow>
         </TableBody>
       </Table>
-      <div css={css({textAlign: 'center', marginTop: 30})}>
+      <div css={css({textAlign: 'center', marginTop: 30, display: 'flex', flexDirection: 'column', gap: 15, alignItems: 'center'})}>
         <Link
           href="tel:09019453965"
           variant="h4"
@@ -549,6 +549,34 @@ const PriceTable = ({car}: {car: {name: string|null, frontSet: number|null, rear
         >
           ☎090-1945-3965<br />
           <span style={{fontSize: '12px', fontWeight: 700}}>ご予約・お問い合わせはこちら</span>
+        </Link>
+        <span>または</span>
+        <Link
+          href="https://lin.ee/imwwrYR"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="h4"
+          gutterBottom
+          color="#fff"
+          sx={{
+            display: 'inline-block',
+            padding: {xs: '12px 24px', sm: '16px 32px'},
+            background: '#06c755',
+            borderRadius: '8px',
+            textDecoration: 'none',
+            fontWeight: 900,
+            fontSize: {xs: 16, sm: 20},
+            boxShadow: '0 4px 12px rgba(6, 199, 85, 0.3)',
+            transition: 'all 0.3s',
+            '&:hover': {
+              background: '#05b04b',
+              boxShadow: '0 6px 16px rgba(6, 199, 85, 0.4)',
+              transform: 'translateY(-2px)'
+            }
+          }}
+        >
+          LINE公式アカウント<br />
+          <span style={{fontSize: '12px', fontWeight: 700}}>LINEでもお問い合わせいただけます</span>
         </Link>
       </div>
     </TableContainer>
