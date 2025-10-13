@@ -566,7 +566,7 @@ const PriceTable = ({car}: {car: {name: string|null, frontSet: number|null, rear
             textDecoration: 'none',
             fontWeight: 900,
             fontSize: {xs: 16, sm: 20},
-            boxShadow: '0 4px 12px rgba(6, 199, 85, 0.3)',
+            boxShadow: '0 2px 4px rgba(6, 199, 85, 0.3)',
             transition: 'all 0.3s',
             '&:hover': {
               background: '#05b04b',
