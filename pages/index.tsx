@@ -17,7 +17,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch("https://script.google.com/macros/s/AKfycbwZkU6AHcLoJ3j9PqVDkgU-98DP9q6mQKCZiodzzz6WfFswUyQWt_cRpo6QI0qSQoIiGw/exec")
+    fetch("https://script.google.com/macros/s/AKfycbyhqRNk0QNNUHkrtbsKT-DP_MnJOzDVwZrXBjhGuRw4jvkXLEGw6lWGt5IvUdoBQ2zCLA/exec")
       .then((res) => res.json())
       .then((makers) => {
           setMakers(makers)
