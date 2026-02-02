@@ -129,7 +129,7 @@ const Home: NextPage = () => {
                 value={maker}
                 label="メーカー"
                 onChange={(event) => {
-                  setMaker(event.target.value)
+                  setMaker(String(event.target.value))
                   setCar({ name: null, frontSet: null, rearSet: null })
                   setShowResult(false)
                   lastTrackedSearchKeyRef.current = null

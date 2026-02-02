@@ -6,11 +6,15 @@ export const pageview = (url: string): void => {
   window.gtag('config', GA_ID, { page_path: url })
 };
 
-const normalizeParam = (value: string, maxLen = 100): string => {
-  return value
-    .replace(/\s+/g, ' ')
-    .trim()
-    .slice(0, maxLen)
+const normalizeParam = (value: unknown, maxLen = 100): string => {
+  if (value === null || value === undefined) return ''
+
+  let stringValue: string
+  if (typeof value === 'string') stringValue = value
+  else if (typeof value === 'number' || typeof value === 'boolean') stringValue = String(value)
+  else return ''
+
+  return stringValue.replace(/\s+/g, ' ').trim().slice(0, maxLen)
 }
 
 export const trackEvent = (eventName: string, params?: Record<string, unknown>): void => {
@@ -18,7 +22,7 @@ export const trackEvent = (eventName: string, params?: Record<string, unknown>):
   window.gtag('event', eventName as any, (params ?? {}) as any)
 }
 
-export const trackCarSearch = (input: { maker: string; carName: string }): void => {
+export const trackCarSearch = (input: { maker: unknown; carName: unknown }): void => {
   const maker = normalizeParam(input.maker)
   const carName = normalizeParam(input.carName)
   if (!maker || !carName) return
