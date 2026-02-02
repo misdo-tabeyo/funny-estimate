@@ -1,5 +1,30 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Analytics (GA4)
+
+This app sends a GA4 event when a user searches for an estimate by maker + car model.
+
+- Event name: `search`
+- Parameters:
+	- `search_term`: `${maker} ${car_model}`
+	- `maker`
+	- `car_model`
+	- `content_type`: `car`
+
+### Setup
+
+1. Set env var: `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` (GA4 Measurement ID like `G-XXXXXXX`).
+2. In GA4 Admin → Custom definitions, register event-scoped custom dimensions:
+	 - `maker`
+	 - `car_model`
+3. Verify on GA4 DebugView (recommended) while using `npm run dev`.
+
+### Aggregation
+
+- Explore → Free form:
+	- Rows: `maker`, `car_model`
+	- Values: `Event count` (filtered by event name = `search`)
+
 ## Getting Started
 
 First, run the development server:

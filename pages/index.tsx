@@ -1,11 +1,12 @@
 import type { NextPage } from 'next'
 import { Button, Card, Divider, FormControl, FormLabel, Link, MenuItem, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { getCars, getMakers, getPrice, makers } from '../db'
 import { css } from "@emotion/react"
 import { FOOTER_HEIGHT, HEADER_HEIGHT } from '../constants'
 import { scrollToTarget } from '../helpers/scroll'
 import { CarLoader } from '../components/CarLoader'
+import { trackCarSearch } from '../helpers/gtag'
 
 const Home: NextPage = () => {
   const [maker, setMaker] = useState("")
@@ -14,6 +15,7 @@ const Home: NextPage = () => {
   const [showResult, setShowResult] = useState(false)
   const cars = useMemo(() => getCars(makers, maker), [makers, maker])
   const [loading, setLoading] = useState(false)
+  const lastTrackedSearchKeyRef = useRef<string | null>(null)
 
   useEffect(() => {
     setLoading(true)
@@ -126,7 +128,12 @@ const Home: NextPage = () => {
                 id="demo-simple-select"
                 value={maker}
                 label="メーカー"
-                onChange={(event) => setMaker(event.target.value)}
+                onChange={(event) => {
+                  setMaker(event.target.value)
+                  setCar({ name: null, frontSet: null, rearSet: null })
+                  setShowResult(false)
+                  lastTrackedSearchKeyRef.current = null
+                }}
                 sx={{
                   '& .MuiOutlinedInput-notchedOutline': {
                     borderColor: '#ddd',
@@ -180,8 +187,19 @@ const Home: NextPage = () => {
             </FormControl>
             <Button
               variant="contained"
-              onClick={() => showResult ? scrollToTarget("result") : car?.name && setShowResult(true)}
-              disabled={!car}
+              onClick={() => {
+                if (!car?.name || !maker) return
+
+                const searchKey = `${maker}|||${car.name}`
+                if (lastTrackedSearchKeyRef.current !== searchKey) {
+                  trackCarSearch({ maker, carName: car.name })
+                  lastTrackedSearchKeyRef.current = searchKey
+                }
+
+                setShowResult(true)
+                scrollToTarget('result')
+              }}
+              disabled={!car?.name || !maker}
               sx={{
                 padding: '16px 32px',
                 fontSize: {xs: 16, sm: 18},
